@@ -9,6 +9,7 @@ const createProduct = async (req, res) => {
       image,
       images,
       brand,
+      operatingSystem,
       countInStock,
       discount,
       discountAmount,
@@ -32,6 +33,7 @@ const createProduct = async (req, res) => {
       image,
       images,
       brand,
+      operatingSystem,
       countInStock,
       discount,
       discountAmount,
@@ -45,7 +47,6 @@ const createProduct = async (req, res) => {
     const response = await ProductService.createProduct(newData);
     return res.status(200).json(response);
   } catch (e) {
-    console.log("controller: ", e);
     return res.status(404).json({
       message: e,
     });

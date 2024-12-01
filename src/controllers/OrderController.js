@@ -2,23 +2,14 @@ const OrderService = require("../services/OrderService");
 
 const createOrder = async (req, res) => {
   try {
-    const {
-      paymentMethod,
-      itemsPrice,
-      memberDiscount,
-      totalPrice,
-      fullName,
-      address,
-      city,
-      phone,
-    } = req.body;
+    const { paymentMethod, itemsPrice, totalPrice, fullName, address, phone } =
+      req.body;
     if (
       !paymentMethod ||
       !itemsPrice ||
       !totalPrice ||
       !fullName ||
       !address ||
-      !city ||
       !phone
     ) {
       return res.status(200).json({
@@ -75,7 +66,7 @@ const getDetailsOrder = async (req, res) => {
   }
 };
 
-const getAllOrderDetails = async (req, res) => {
+const getAllOrderByUserId = async (req, res) => {
   try {
     const userId = req.params.id;
     if (!userId) {
@@ -84,10 +75,9 @@ const getAllOrderDetails = async (req, res) => {
         message: "The userId is required",
       });
     }
-    const response = await OrderService.getAllOrderDetails(userId);
+    const response = await OrderService.getAllOrderByUserId(userId);
     return res.status(200).json(response);
   } catch (e) {
-    // console.log(e)
     return res.status(404).json({
       message: e,
     });
@@ -129,7 +119,7 @@ module.exports = {
   createOrder,
   updateOrder,
   getDetailsOrder,
-  getAllOrderDetails,
+  getAllOrderByUserId,
   getAllOrder,
   cancelOrder,
 };

@@ -148,10 +148,18 @@ const deleteUser = (id) => {
   });
 };
 
-const getAllUser = (id) => {
+const getAllUser = (filter) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const allUser = await User.find(id);
+      let allUser = [];
+      if (filter) {
+        const label = filter[0];
+        allUser = await User.find({
+          [label]: { $regex: filter[1] },
+        });
+      } else {
+        allUser = await User.find();
+      }
 
       resolve({
         status: "OK",

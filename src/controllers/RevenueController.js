@@ -45,11 +45,10 @@ const updateRevenue = async (req, res) => {
       });
     }
 
-    // Cập nhật hoặc tạo mới doanh thu
     const updatedRevenue = await Revenue.findOneAndUpdate(
       { year, month },
       { $set: { amount } },
-      { upsert: true, new: true } // Tạo mới nếu không tìm thấy, trả về bản ghi sau khi cập nhật
+      { upsert: true, new: true }
     );
 
     res.status(200).json({

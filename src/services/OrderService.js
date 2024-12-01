@@ -1,6 +1,5 @@
 const Order = require("../models/OrderProduct");
 const Product = require("../models/ProductModel");
-// const EmailService = require("../services/EmailService");
 
 const createOrder = (newOrder) => {
   return new Promise(async (resolve, reject) => {
@@ -12,11 +11,9 @@ const createOrder = (newOrder) => {
       totalPrice,
       fullName,
       address,
-      city,
       phone,
       user,
       isPaid,
-      paidAt,
     } = newOrder;
     try {
       const promises = orderItems.map(async (order) => {
@@ -62,7 +59,6 @@ const createOrder = (newOrder) => {
           shippingAddress: {
             fullName,
             address,
-            city,
             phone,
           },
           paymentMethod,
@@ -71,7 +67,6 @@ const createOrder = (newOrder) => {
           totalPrice,
           user: user,
           isPaid,
-          paidAt,
         });
 
         if (createdOrder) {
@@ -139,7 +134,7 @@ const getOrderDetails = (id) => {
   });
 };
 
-const getAllOrderDetails = (id) => {
+const getAllOrderByUserId = (id) => {
   return new Promise(async (resolve, reject) => {
     try {
       const order = await Order.find({
@@ -221,6 +216,7 @@ const getAllOrder = () => {
   return new Promise(async (resolve, reject) => {
     try {
       const allOrder = await Order.find();
+
       resolve({
         status: "OK",
         message: "GET ALL ORDER SUCCESS",
@@ -236,7 +232,7 @@ module.exports = {
   createOrder,
   updateOrder,
   getOrderDetails,
-  getAllOrderDetails,
+  getAllOrderByUserId,
   getAllOrder,
   cancelOrder,
 };

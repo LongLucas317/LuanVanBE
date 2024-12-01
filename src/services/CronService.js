@@ -29,6 +29,7 @@ const updateDiscounts = async () => {
 
     const utcArr4 = `${timeGraft}:${utcArr3[1]}`;
     const utcArrFinal = `${utcArr16}T${utcArr4}` + ":00.000+00:00";
+
     const productsToUpdate = await Product.find();
 
     for (let product of productsToUpdate) {

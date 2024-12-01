@@ -9,6 +9,7 @@ const createProduct = (newProduct) => {
       image,
       images,
       brand,
+      operatingSystem,
       countInStock,
       discount,
       discountAmount,
@@ -36,6 +37,7 @@ const createProduct = (newProduct) => {
         image,
         images,
         brand,
+        operatingSystem,
         countInStock: Number(countInStock),
         discount,
         discountAmount: Number(discountAmount),
@@ -86,39 +88,6 @@ const updateProduct = (id, data) => {
     }
   });
 };
-
-// const updateDiscounts = async () => {
-//   const now = new Date();
-//   const utcString = now.toLocaleString("en-US", {
-//     timeZone: "Asia/Ho_Chi_Minh",
-//   });
-
-//   const utcArr1 = utcString.split(", ")[0];
-//   const utcArr15 = utcArr1.replaceAll("/", "-");
-//   const utcArr2 = utcString.split(", ")[1];
-//   const utcArr3 = utcArr2.split(":");
-//   const utcArr4 = utcArr3[0].concat(":").concat(utcArr3[1]);
-//   const utcArrFinal = `${utcArr15}T${utcArr4}:00.000+00:00Z`;
-
-//   const productsToUpdate = await Product.find();
-
-//   for (let product of productsToUpdate) {
-//     if (
-//       product.discountStartTime <= utcArrFinal &&
-//       product.discountEndTime >= utcArrFinal
-//     ) {
-//       console.log("check");
-//       product.discount = product.discountAmount;
-//       product.isSale = true;
-//     } else {
-//       product.discount = 0;
-//       product.isSale = false;
-//     }
-//     await product.save();
-//   }
-
-//   console.log("Discounts updated successfully");
-// };
 
 const deleteProduct = (id) => {
   return new Promise(async (resolve, reject) => {
@@ -285,7 +254,6 @@ const getAllOptions = () => {
 module.exports = {
   createProduct,
   updateProduct,
-  // updateDiscounts,
   deleteProduct,
   deleteManyProduct,
   getDetailProduct,

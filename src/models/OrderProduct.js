@@ -8,7 +8,6 @@ const orderSchema = new mongoose.Schema(
         amount: { type: Number, required: true },
         image: { type: String, required: true },
         price: { type: Number, required: true },
-        discount: { type: Number },
         optionId: { type: Number },
         color: { type: String },
         ram: { type: String },
@@ -23,7 +22,6 @@ const orderSchema = new mongoose.Schema(
     shippingAddress: {
       fullName: { type: String, required: true },
       address: { type: String, required: true },
-      city: { type: String, required: true },
       phone: { type: Number, required: true },
     },
     paymentMethod: { type: String, required: true },
@@ -32,9 +30,7 @@ const orderSchema = new mongoose.Schema(
     totalPrice: { type: Number, required: true },
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     isPaid: { type: Boolean, default: false },
-    paidAt: { type: Date },
     isDelivered: { type: String, default: "Chưa giao" },
-    deliveredAt: { type: Date },
   },
   {
     timestamps: true,

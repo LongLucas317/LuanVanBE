@@ -8,7 +8,6 @@ const userSchema = new mongoose.Schema(
     isAdmin: { type: Boolean, default: false, required: true },
     phone: { type: Number },
     address: { type: String },
-    city: { type: String },
     avatar: { type: String },
     totalInvoice: { type: Number, default: 0 },
     rank: { type: String, default: "Đồng" },

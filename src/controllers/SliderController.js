@@ -1,4 +1,3 @@
-// backend/controllers/sliderController.js
 const Image = require("../models/SliderModel");
 
 // Thêm hình ảnh
